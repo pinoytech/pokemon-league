@@ -46,7 +46,7 @@ export const getPokemon = (query) => async (dispatch) => {
 
 export const addPokemonToList = (pokemon) => (dispatch) => {
   if (pokemon.length === 6) {
-    dispatch({ type: "TOO_MANY_POKEMON" });
+    return dispatch({ type: "TOO_MANY_POKEMON" });
   }
   dispatch({ type: "ADD_POKEMON", payload: pokemon });
 };
@@ -84,7 +84,6 @@ export const addMoveToSet = (pokemon, move) => (dispatch) => {
 };
 
 export const removeMoveFromSet = (pokemon, move) => {
-  console.log("stuff");
   return {
     type: "REMOVE_MOVE_FROM_SET",
     payload: { pokemon, move },

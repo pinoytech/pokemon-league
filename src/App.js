@@ -1,9 +1,9 @@
 import React from "react";
 
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 import PokemonCustomizer from "./components/PokemonCustomizer";
 import Pokedex from "./components/Pokedex";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 
 function App() {
   return (

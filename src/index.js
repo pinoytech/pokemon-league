@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import thunk from "redux-thunk";
 import { applyMiddleware, createStore, compose } from "redux";
-import "./index.css";
+import { Provider } from "react-redux";
+
+import allReducers from "./reducers";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import allReducers from "./reducers";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
+import "./index.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

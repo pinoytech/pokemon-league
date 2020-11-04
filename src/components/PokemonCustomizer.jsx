@@ -1,6 +1,7 @@
 import React from "react";
-import LineUp from "./LineUp";
+
 import Customizer from "./Customizer";
+import LineUp from "./LineUp";
 
 const PokemonCustomizer = () => {
   return (

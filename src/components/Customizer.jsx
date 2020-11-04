@@ -1,12 +1,13 @@
 import React from "react";
+import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { GithubPicker } from "react-color";
+
 import {
   changeCustomizingPokemon,
   addMoveToSet,
   removeMoveFromSet,
 } from "../actions/pokemonActions";
-import styled from "styled-components";
 
 const MovesContainer = styled.div`
   overflow-y: scroll;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPokemon, addPokemonToList } from "../actions/pokemonActions";
 
+import { getPokemon, addPokemonToList } from "../actions/pokemonActions";
 import typeColors from "../helpers/typeColors";
 
 const Pokedex = () => {
