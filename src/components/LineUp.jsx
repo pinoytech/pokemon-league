@@ -20,27 +20,40 @@ const LineUp = () => {
     <>
       <div className="row">
         <div className="col align-items-center">
-          <h3 className="align-items-center">Line Up</h3>
+          <h2 className="h4 text-uppercase font-weight-bold">Pokemon LineUp</h2>
         </div>
       </div>
       <div className="row">
+        {pokemonLineUp.length === 0 && (
+          <div>
+            <p>Complete your Pokemon Lineup</p>
+          </div>
+        )}
         {pokemonLineUp.map((pokemon, index) => (
-          <div key={index} className="col">
-            <img src={pokemon.image} alt={`${pokemon.name} pokemon`} />
-            <br />
-            <button
-              className="btn btn-sm btn-warning"
-              onClick={() => removePokemon(pokemon)}
-            >
-              Remove
-            </button>
-            <br />
-            <button
-              className="btn btn-sm btn-link"
-              onClick={() => customizePokemon(pokemon)}
-            >
-              Customize
-            </button>
+          <div key={index} className="col-4 col-xs-12 mb-2">
+            <div className="card">
+              <div className="card-body text-center">
+                <p className="font-weight-bold">
+                  {pokemon.name} <br />
+                  {`#${pokemon.id}`}
+                </p>
+                <img src={pokemon.image} alt={`${pokemon.name} pokemon`} />
+                <br />
+                <button
+                  className="btn btn-sm btn-warning"
+                  onClick={() => removePokemon(pokemon)}
+                >
+                  Remove
+                </button>
+                <br />
+                <button
+                  className="btn btn-link btn-sm"
+                  onClick={() => customizePokemon(pokemon)}
+                >
+                  Customize
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>

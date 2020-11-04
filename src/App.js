@@ -7,7 +7,7 @@ import Pokedex from "./components/Pokedex";
 
 function App() {
   return (
-    <div className="App container">
+    <div className="container">
       <div className="row">
         <PokemonCustomizer />
         <Pokedex />

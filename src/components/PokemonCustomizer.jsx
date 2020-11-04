@@ -4,9 +4,11 @@ import Customizer from "./Customizer";
 
 const PokemonCustomizer = () => {
   return (
-    <div className="col-6">
-      <LineUp />
-      <Customizer />
+    <div className="col bg-white card mt-5">
+      <div className="card-body">
+        <LineUp />
+        <Customizer />
+      </div>
     </div>
   );
 };
