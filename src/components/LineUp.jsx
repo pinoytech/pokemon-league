@@ -25,12 +25,12 @@ const LineUp = () => {
       </div>
       <div className="row">
         {pokemonLineUp.length === 0 && (
-          <div>
+          <div className="col">
             <p>Complete your Pokemon Lineup</p>
           </div>
         )}
         {pokemonLineUp.map((pokemon, index) => (
-          <div key={index} className="col-4 col-xs-12 mb-2">
+          <div key={index} className="col-12 col-md-4 mb-2">
             <div className="card">
               <div className="card-body text-center">
                 <p className="font-weight-bold">
@@ -40,7 +40,7 @@ const LineUp = () => {
                 <img src={pokemon.image} alt={`${pokemon.name} pokemon`} />
                 <br />
                 <button
-                  className="btn btn-sm btn-warning"
+                  className="btn btn-sm btn-danger"
                   onClick={() => removePokemon(pokemon)}
                 >
                   Remove

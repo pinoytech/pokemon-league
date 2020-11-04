@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { GithubPicker } from "react-color";
 import {
   changeCustomizingPokemon,
   addMoveToSet,
@@ -35,6 +36,10 @@ const Customizer = () => {
     dispatch(changeCustomizingPokemon(event.target.value, field, pokemon));
   };
 
+  const handleColorChange = (color) => {
+    dispatch(changeCustomizingPokemon(color.hex, "color", customizingPokemon));
+  };
+
   const addMoves = (pokemon, move) => {
     dispatch(addMoveToSet(pokemon, move));
   };
@@ -44,26 +49,37 @@ const Customizer = () => {
   };
   return (
     <>
-      <div className="row bg">
+      <div className="row bg mt-2">
         <div className="col align-items-center">
           <h2 className="h4 text-uppercase font-weight-bold">Customizer</h2>
         </div>
       </div>
       {errorMessage && (
         <div className="row">
-          <div className="col alert alert-danger">{errorMessage}</div>
+          <div className="col">
+            <div className="alert alert-danger">{errorMessage}</div>
+          </div>
         </div>
       )}
       {customizingPokemon ? (
         <>
-          <div className="row">
-            <div className="col text-center">
-              <img
-                src={customizingPokemon.image}
-                alt={`${customizingPokemon.name}`}
-              />
-              <br />
-              <p className="font-weight-bold">{`${customizingPokemon.name} #${customizingPokemon.id}`}</p>
+          <div className="row mb-2">
+            <div className="col">
+              <div
+                className="d-flex flex-column text-center align-items-center justify-content-center"
+                style={{
+                  backgroundColor: customizingPokemon.color,
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <img
+                  src={customizingPokemon.image}
+                  alt={`${customizingPokemon.name}`}
+                />
+                <br />
+                <p className="font-weight-bold">{`${customizingPokemon.name} #${customizingPokemon.id}`}</p>
+              </div>
             </div>
             <div className="col">
               <div className="form-group">
@@ -81,6 +97,7 @@ const Customizer = () => {
               <div className="form-group">
                 <label htmlFor="favorite-color">Favorite color</label>
                 <input
+                  readOnly
                   value={customizingPokemon.color || ""}
                   type="text"
                   onChange={(event) =>
@@ -89,13 +106,22 @@ const Customizer = () => {
                   className="form-control"
                   id="favorite-color"
                 />
+                <br />
+                <GithubPicker onChangeComplete={handleColorChange} />
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="col mb-5">
+            <div className="col">
+              <h3 className="h5 text-uppercase font-weight-bold">Move set</h3>
+              {customizingPokemon.moveSet.length === 0 && (
+                <p>Choose from the moves below to add to your move set</p>
+              )}
               {customizingPokemon.moveSet.map((move, index) => (
-                <span className="btn btn-sm btn-warning mr-2" key={index}>
+                <span
+                  className="btn btn-sm btn-warning mr-2 mb-2 default-pointer"
+                  key={index}
+                >
                   <button
                     type="button"
                     className="close"
@@ -109,9 +135,14 @@ const Customizer = () => {
               ))}
             </div>
           </div>
+          <div className="row mt-2">
+            <div className="col">
+              <h3 className="h5 text-uppercase font-weight-bold">Move pool</h3>
+            </div>
+          </div>
           <div className="row">
             <MovesContainer className="col">
-              <MovesContainerList>
+              <MovesContainerList className="bg-light p-2">
                 {customizingPokemon.moves.map(({ move }, index) => {
                   return (
                     <li key={index}>
